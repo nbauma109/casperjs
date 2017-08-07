@@ -2308,7 +2308,7 @@ Casper.prototype.switchToChildFrame = function switchToChildFrame(frameInfo) {
     } else if (this.page.childFramesName().indexOf(frameInfo) === -1) {
         throw new CasperError(f('No frame named "%s" was found.', frameInfo));
     } else {
-        this.page.context = this.getElementBounds(selectXPath('(//frame|//iframe)[@name="' + frameInfo + '"]'), true);
+        this.page.context = this.getElementBounds(selectXPath('(//frame|//iframe)[@name="' + frameInfo + '" or @id="' + frameInfo + '"]'), true);
     }
     // make the frame page the currently active one
     this.page.switchToFrame(frameInfo);
